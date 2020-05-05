@@ -38,8 +38,7 @@ def change_board(board, overside):
     print_board(overside)
     for x in range(2):
         while True:
-            print("choose number 1~8: ")
-            a = int(input())
+            a = int(input("choose number 1~8: "))
             if a > 8 or board[a-1] == '*':
                 print("you cant choose that number")
             else:
