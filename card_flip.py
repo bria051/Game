@@ -66,11 +66,11 @@ def discriminate(board):
             return 0
         else:
             num += 1
-    if num == 8:
+    if num == len(board):
         return 1
 
 
-board, overside = mix_card(11)
+board, overside = mix_card(2)
 while True:
     change_board(board, overside)
     flag = discriminate(board)
