@@ -20,12 +20,22 @@ def mix_card(num):
 
     return list_n, overside
 
+def print_board(board):
+    sentence = ""
+    for x in range(len(board)):
+        if x == len(board)/2:
+            sentence += "\n"
+        sentence += str(board[x])
+        sentence += " "
+    print(sentence)
+
 def change_board(board, overside):
     # 두개의 수를 입력받고 받은 n번째의 두 수들을 비교함
     box = []
-    print(overside)
+    print_board(overside)
     for x in range(2):
         while True:
+            print("choose number 1~8: ")
             a = int(input())
             if a > 8 or board[a-1] == '*':
                 print("you cant choose that number")
@@ -34,7 +44,7 @@ def change_board(board, overside):
 
         board[a-1], overside[a-1] = overside[a-1], board[a-1]
         box.append(a)
-        print(overside)
+        print_board(overside)
 
     if overside[box[0]-1] != overside[box[1]-1]:
         board[box[0]-1], overside[box[0]-1] = overside[box[0]-1], board[box[0]-1]
@@ -55,6 +65,7 @@ def discriminate(board):
             num += 1
     if num == 8:
         return 1
+
 
 board, overside = mix_card(8)
 while True:
