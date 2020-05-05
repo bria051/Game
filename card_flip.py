@@ -7,7 +7,7 @@ def mix_card(num):
     count = []
     overside = []
 
-    for x in range(num):
+    for x in range(int(num/2)*2):
         overside.append('*')
         if x < int(num/2):
             count.append(0)
@@ -22,7 +22,7 @@ def mix_card(num):
 
 def print_board(board):
     # 판을 보기 편하게 출력함
-    
+
     sentence = ""
     for x in range(len(board)):
         if x == len(board)/2:
@@ -33,13 +33,13 @@ def print_board(board):
 
 def change_board(board, overside):
     # 두개의 수를 입력받고 받은 n번째의 두 수들을 비교함
-    
+
     box = []
     print_board(overside)
     for x in range(2):
         while True:
-            a = int(input("choose number 1~8: "))
-            if a > 8 or board[a-1] == '*':
+            a = int(input("choose number 1~%d: "%(len(board))))
+            if a > len(board) or board[a-1] == '*':
                 print("you cant choose that number")
             else:
                 break
@@ -59,7 +59,7 @@ def change_board(board, overside):
 
 def discriminate(board):
     # 모든 수들이 선택되면 게임을 끝내는 신호를 줌
-    
+
     num = 0
     for x in board:
         if x != '*':
@@ -70,7 +70,7 @@ def discriminate(board):
         return 1
 
 
-board, overside = mix_card(8)
+board, overside = mix_card(11)
 while True:
     change_board(board, overside)
     flag = discriminate(board)
