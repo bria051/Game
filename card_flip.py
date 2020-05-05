@@ -21,6 +21,8 @@ def mix_card(num):
     return list_n, overside
 
 def print_board(board):
+    # 판을 보기 편하게 출력함
+    
     sentence = ""
     for x in range(len(board)):
         if x == len(board)/2:
@@ -31,6 +33,7 @@ def print_board(board):
 
 def change_board(board, overside):
     # 두개의 수를 입력받고 받은 n번째의 두 수들을 비교함
+    
     box = []
     print_board(overside)
     for x in range(2):
@@ -56,7 +59,8 @@ def change_board(board, overside):
     return board, overside
 
 def discriminate(board):
-    # 모든 수들이 선택되면 게임을 끝내는 신호르르 줌
+    # 모든 수들이 선택되면 게임을 끝내는 신호를 줌
+    
     num = 0
     for x in board:
         if x != '*':
