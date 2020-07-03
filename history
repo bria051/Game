@@ -3,10 +3,21 @@ import random
 def change_answer(answer):
     sentence = ""
     for x in range(len(answer)):
-        if answer[x] != " " and answer[x] != "," and answer[x] != "." and answer[x] != "ㆍ" and answer[x] != "-":
+        if answer[x] != " " and answer[x] != "," and answer[x] != "." and answer[x] != "ㆍ"\
+                and answer[x] != "-" and answer[x] != "\'" and answer[x] != "\"":
             sentence += answer[x]
     return sentence
 
+def print_problem(problem):
+    sentence = ""
+    flag = 0
+    for x in range(len(problem)):
+        if x > 50 and problem[x] == " " and flag == 0:
+            sentence += "\n"
+            flag = 1
+        else:
+            sentence += problem[x]
+    return sentence
 
 while True:
     try:
@@ -132,24 +143,26 @@ answers = ["호포제",
 
 score = 0
 pass_p = 0
+print("\n답 대신 \'pass\'를 입력하시면 문제를 건너 뛰실 수 있습니다.")
+print("문제를 그만 풀고 싶으시다면 \'exit\'를 입력해주세요.")
 for x in order:
-    print(problems[x])
+    print('\n', print_problem(problems[x]))
     answer = input("답을 입력하세요: ")
     if change_answer(answer) == answers[x]:
         score += 1
-        print("정답!")
+        print("  정답!")
     elif change_answer(answer) == "pass":
-        print("문제를 건너 뛰겠습니다.")
+        print("  문제를 건너 뛰겠습니다.")
         pass_p += 1
         continue
     elif change_answer(answer) == "exit":
-        flag = input("그만 두시겠습니까? (y/n): ")
+        flag = input("  그만 두시겠습니까? (y/n): ")
         if flag.lower() == "y":
             break
         elif flag.lower() == "n":
-            print("취소되었습니다.")
+            print("  취소되었습니다.")
     else:
-        print("오답..")
+        print("  오답.. 정답은 {}입니다.".format(answers[x]))
 
 if score == len(order):
     print("만점 입니다")
