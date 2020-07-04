@@ -34,7 +34,7 @@ while True:
 
 order = []
 while len(order) < number:
-    random_int = random.randrange(1, 53)
+    random_int = random.randrange(0, 52)
     if not random_int in order:
         order.append(random_int)
 
